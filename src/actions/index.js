@@ -1,10 +1,11 @@
-import {user1} from '../data/users';
+import {users} from '../data/users';
 
-export function signin(auth) {
-    if (auth) {
+export function signin(auth, username) {
+    const user = users[username];
+    if (auth && username) {
         return {
             type: 'sign_in',
-            payload: user1
+            payload: user
         }
     }
     return {
