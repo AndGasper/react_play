@@ -1,0 +1,25 @@
+.home {
+    display: flex;
+    flex-direction: column;
+}
+.home button {
+    border: none;
+    padding: 8px;
+    font-size: 28px;
+    font-weight: bold;
+    background-color: deeppink;
+    box-shadow: 3px 3px 8px black;
+    border-radius: 15px;
+    text-shadow: 2px 2px 4px black;
+}
+
+.home button:hover {
+    background-color: green;
+    border: none;
+    border-radius: 15px;
+}
+
+.home button:focus {
+    outline-color: red;
+    background-color: #1b6d85;
+}
