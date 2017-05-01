@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Form, reduxForm} from 'redux-form';
+import {form, reduxForm} from 'redux-form';
 
 const renderField = ({input, label, type, meta: {touched, error} }) => (
     <div>
@@ -13,12 +13,21 @@ const renderField = ({input, label, type, meta: {touched, error} }) => (
 
 
 class LoginForm extends Component {
+    constructor(props) {
+        super(props);
+        const {handleSubmit} = this.props;
+    };
+
+
     render () {
-        const {handleSubmit} = this.props; // this.props.handleSubmit is a built in method for forms
+
         return (
-        <Form onSubmit={handleSubmit}>
-            <Field name="username"/>
-        </Form>
+        <form onSubmit={handleSubmit}>
+            <Field name="username" type="text" component={renderField} label="Username"/>
+            <Field name="password" type="password" component={renderField} label="Password"/>
+            {error && <strong>{error}</strong>}
+
+        </form>
         )
     }
 
