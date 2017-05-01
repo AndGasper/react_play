@@ -1,14 +1,40 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'; // If you want to notify components of state changes, you're going to need the store. "Yo, state's changed for (affected Components)!;
-import LoginForm from 'components/LoginForm';
-import loginReducer from ''
-let store = createStore(loginReducer); // createStore(reducerFunction);)
+import { Values } from 'redux-form-website-template';
+import store from './store';
+import showResults from './showResults';
+import LoginForm from './LoginForm';
 
-render(
-    <Provider store = {store}>
-        <LoginForm />
+const rootEl = document.getElementById('root');
+
+ReactDOM.render(
+    <Provider store={store}>
+        <div style={{ padding: 15 }}>
+            <h2>Submit Validation</h2>
+
+            <ul>
+                <li>
+                    Usernames that will pass validation:
+                    {' '}
+                    <code>john</code>
+                    ,
+                    {' '}
+                    <code>paul</code>
+                    ,
+                    {' '}
+                    <code>george</code>
+                    , or
+                    {' '}
+                    <code>ringo</code>
+                    .
+                </li>
+                <li>Valid password for all users: <code>redux-form</code>.</li>
+            </ul>
+
+            <LoginForm onSubmit={showResults} />
+            <Values form="loginForm" />
+        </div>
     </Provider>,
-    document.getElementById('root');
-)
+    rootEl,
+);
