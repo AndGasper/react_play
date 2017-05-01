@@ -1,15 +1,14 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import {applyMiddleware, createStore } from 'redux';
+import { createStore } from 'redux'; // If you want to notify components of state changes, you're going to need the store. "Yo, state's changed for (affected Components)!;
+import LoginForm from 'components/LoginForm';
+import loginReducer from './reducers';
+let store = createStore(loginReducer); // createStore(reducerFunction);)
 
-import App from './components/app';
-import reducers from './reducers/index';
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-
-ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducers)}>
-        <App />
+render(
+    <Provider store = {store}>
+        <LoginForm />
     </Provider>,
-    document.getElementById('root')
-);
+    document.getElementById('root');
+)
